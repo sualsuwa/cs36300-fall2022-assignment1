@@ -77,9 +77,8 @@ const char & Array::operator [] (size_t index) const
 
 char Array::get (size_t index) const
 {
- if (index > 0) return data_[index];
- else 
- return '0';
+  
+ return data_[index];
 }
 
 void Array::set (size_t index, char value)
