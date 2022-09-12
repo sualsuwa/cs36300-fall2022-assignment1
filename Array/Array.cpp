@@ -4,13 +4,15 @@
 //
 // I pledge that I have neither given nor receieved any help
 // on this assignment.
-
+#include <iostream>
 #include "Array.h"
+#define unsigned int size_t
+#define MAX 50
 
 Array::Array (void)
 {
-   data_ = new char[]; 
-cur_size_ = 0;
+   data_ = new char[MAX]; 
+cur_size_ = MAX;
 max_size_ = 0;
 }
 
@@ -64,10 +66,8 @@ const Array & Array::operator = (const Array & rhs)
 
 char & Array::operator [] (size_t index)
 {
-   if( index > max_size_)
-   {
-        return data_[0];
-   }
+       return data_[index];
+   
 }
 
 const char & Array::operator [] (size_t index) const
@@ -123,7 +123,7 @@ int Array::find (char ch, size_t start) const
 
 bool Array::operator == (const Array & rhs) const
 {
-  if(rhs.daa_ == data_ && rhs.cur_size_ == cur_size_ && rhs.max_size_ == max_size_)
+  if(rhs.data_ == data_ && rhs.cur_size_ == cur_size_ && rhs.max_size_ == max_size_)
   {
       return true;
   }
@@ -132,7 +132,7 @@ bool Array::operator == (const Array & rhs) const
 
 bool Array::operator != (const Array & rhs) const
 {
-if(rhs.daa_ != data_ && rhs.cur_size_ != cur_size_ && rhs.max_size_ != max_size_)
+if(rhs.data_ != data_ && rhs.cur_size_ != cur_size_ && rhs.max_size_ != max_size_)
 {
     return true;
 
@@ -175,22 +175,16 @@ void Array::reverse (void)
 
 Array Array::slice (size_t begin) const
 {
-   Array temp(cur_size_ - begin);
-   for(int i = 0;i <temp.max_size_();i++ )
-   {
-       temp.set(i,data_[begin +i ]);
-   }
-   return temp;
+   Array A;
+   int len = strlen(data_);
+   A.data_ = data_ + (len < begin ? 0 : len - begin);
+   return 0;
 }
 
 Array Array::slice (size_t begin, size_t end) const
 {
-  Array temp(end - begin);
-  if(end < cur_size_)
-  {
-      for(int i = 0; i < temp.max_size_();i++)
-      temp.set(i,data_[begin + i]);
-  }
-  return temp;
+ Array A;
+A.data_ = data_ + (end < begin ? 0 : end - begin);
+return A;
 }
 
