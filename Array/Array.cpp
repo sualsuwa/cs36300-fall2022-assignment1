@@ -107,7 +107,7 @@ int Array::find (char ch) const
         if(data_[i] == ch)
         return 1;
     }
-    return 0
+    return 0;
 }
 
 int Array::find (char ch, size_t start) const
@@ -115,8 +115,10 @@ int Array::find (char ch, size_t start) const
  for(int i = start; i < cur_size_; i++)
  {
      if(data_[i] == ch)
-    }
-    return i;
+	     return 1;
+	 
+     }
+    return 0;
 }
 
 bool Array::operator == (const Array & rhs) const
